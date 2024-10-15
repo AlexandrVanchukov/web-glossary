@@ -1,0 +1,211 @@
+{
+    "nodes": [
+        {
+        "id": "f1_score",
+        "name": "F1-Score"
+        },
+        {
+        "id": "recall",
+        "name": "Recall"
+        },
+        {
+        "id": "precision",
+        "name": "Precision"
+        },
+        {
+        "id": "false_alarm_rate",
+        "name": "False\nAlarm\nRate"
+        },
+        {
+        "id": "metrics_of_static_analysis_efficiency",
+        "name": "Метрики эффективности\nстатического анализа"
+        },
+        {
+        "id": "static_code_analysis",
+        "name": "Статический\nанализ кода"
+        },
+        {
+        "id": "sonarqube",
+        "name": "SonarQube"
+        },
+        {
+        "id": "svace",
+        "name": "Svace"
+        },
+        {
+        "id": "pvs_studio",
+        "name": "PVS-Studio"
+        },
+        {
+        "id": "static_analyzer",
+        "name": "Статический\nанализатор"
+        },
+        {
+        "id": "security_testing",
+        "name": "Тестирование\nбезопасности"
+        },
+        {
+        "id": "security_vulnerabilities",
+        "name": "Уязвимости\nбезопасности"
+        },
+        {
+        "id": "owasp",
+        "name": "OWASP"
+        },
+        {
+        "id": "cwe",
+        "name": "CWE"
+        },
+        {
+        "id": "sql_injection",
+        "name": "SQL-инъекция"
+        },
+        {
+        "id": "xss",
+        "name": "XSS"
+        },
+        {
+        "id": "backend",
+        "name": "Backend"
+        },
+        {
+        "id": "error_matrix",
+        "name": "Матрица\nошибок"
+        },
+        {
+        "id": "true_positive",
+        "name": "True\nPositive"
+        },
+        {
+        "id": "false_positive",
+        "name": "False\nPositive"
+        },
+        {
+        "id": "true_negative",
+        "name": "True\nNegative"
+        },
+        {
+        "id": "false_negative",
+        "name": "Flase\nNegative"
+        }
+    ],
+    "links":[
+      {
+        "id": "a1",
+        "source": "backend",
+        "target": "security_vulnerabilities",
+        "name": "имеет"
+      }, {
+        "id": "a2",
+        "source": "cwe",
+        "target": "security_vulnerabilities",
+        "name": "стандарт\nдля описания"
+      }, {
+        "id": "a3",
+        "source": "owasp",
+        "target": "security_vulnerabilities",
+        "name": "список\nсамых опасных"
+      }, {
+        "id": "a4",
+        "source": "security_vulnerabilities",
+        "target": "sql_injection",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a5",
+        "source": "security_vulnerabilities",
+        "target": "xss",
+        "name": "включают\nв себя"
+      }, {
+        "id": "a6",
+        "source": "security_vulnerabilities",
+        "target": "security_testing",
+        "name": "обнаруживаются\nи устанавливаются при"
+      }, {
+        "id": "a7",
+        "source": "security_testing",
+        "target": "static_code_analysis",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a8",
+        "source": "static_code_analysis",
+        "target": "static_analyzer",
+        "name": "с использованием"
+      },
+      {
+        "id": "a9",
+        "source": "static_analyzer",
+        "target": "pvs_studio",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a10",
+        "source": "static_analyzer",
+        "target": "svace",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a11",
+        "source": "static_analyzer",
+        "target": "sonarqube",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a12",
+        "source": "metrics_of_static_analysis_efficiency",
+        "target": "static_code_analysis",
+        "name": "характеризуют"
+      }, {
+        "id": "a13",
+        "source": "metrics_of_static_analysis_efficiency",
+        "target": "false_alarm_rate",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a14",
+        "source": "metrics_of_static_analysis_efficiency",
+        "target": "recall",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a15",
+        "source": "metrics_of_static_analysis_efficiency",
+        "target": "f1_score",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a16",
+        "source": "metrics_of_static_analysis_efficiency",
+        "target": "precision",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a19",
+        "source": "false_alarm_rate",
+        "target": "error_matrix",
+        "name": "рассчитывается\nс помощью"
+      }, {
+        "id": "a20",
+        "source": "recall",
+        "target": "error_matrix",
+        "name": "рассчитывается\nс помощью"
+      }, {
+        "id": "a21",
+        "source": "precision",
+        "target": "error_matrix",
+        "name": "рассчитывается\nс помощью"
+      }, {
+        "id": "a22",
+        "source": "error_matrix",
+        "target": "true_positive",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a23",
+        "source": "error_matrix",
+        "target": "true_negative",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a24",
+        "source": "error_matrix",
+        "target": "false_positive",
+        "name": "включает\nв себя"
+      }, {
+        "id": "a25",
+        "source": "error_matrix",
+        "target": "false_negative",
+        "name": "включает\nв себя"
+      }
+    ]
+  }
