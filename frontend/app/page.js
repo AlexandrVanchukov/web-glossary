@@ -1,9 +1,7 @@
-"use client";  // Добавь это на первой строке
+"use client"; 
 
 import { useState, useEffect } from 'react';
-import Image from "next/image";
 import styles from "./page.module.css";
-import env from "../env/env"
 
 export default function Home() {
   const [glossary, setGlossary] = useState([]);
@@ -14,16 +12,20 @@ export default function Home() {
             .then(data => setGlossary(data));
     }, []);
 
+    const sortedGlossary = [...glossary].sort((a, b) =>
+        a.term.localeCompare(b.term)
+    );
+
     return (
         <div>
-            <h1>Glossary</h1>
-            <ul>
-                {glossary.map((entry, index) => (
-                    <li key={index}>
-                        <strong>{entry.term}:</strong> {entry.definition}
-                    </li>
+            <div className={styles.grid}>
+                {sortedGlossary.map((entry, index) => (
+                    <div key={index} className={styles.card}>
+                        <h2 className={styles.term}>{entry.term}</h2>
+                        <p className={styles.definition}>{entry.definition}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

@@ -5,14 +5,16 @@ import dynamic from 'next/dynamic';
 const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false });
 
 export default function MindMap() {
-    const [mindMap, setMindMap] = useState([]);
-  
+    const [mindMap, setMindMap] = useState({ nodes: [], links: [] });
     useEffect(() => {
-        fetch('http://localhost:5000/api/mind-map')
-            .then(res => res.json())
-            .then(data => setMindMap(data));
+      async function fetchData() {
+        const response = await fetch('http://localhost:5000/api/mind-map')
+        const data = await response.json();
+        setMindMap(data);
+      }
+      fetchData();
     }, []);
-
+    console.log(mindMap);
     function nodePaint({ x, y }, color, ctx) {
         // Рисуем стандартный кружок узла
         ctx.beginPath();
@@ -23,7 +25,6 @@ export default function MindMap() {
 
       return (
           <div>
-              <h1>MindMap</h1>
               <ForceGraph2D
                 graphData={mindMap}
                 nodeCanvasObject={(node, ctx, globalScale) => {
@@ -31,7 +32,7 @@ export default function MindMap() {
 
                     nodePaint(node, "#4cbb17", ctx);
 
-                    const fontSize = 16 / globalScale;
+                    const fontSize = 3;
                     ctx.font = `${fontSize}px Arial`;
                     ctx.fillStyle = "#23282b"; // Цвет текста узла
                     ctx.textAlign = "center";
@@ -61,7 +62,7 @@ export default function MindMap() {
                     ctx.stroke();
           
                     // Рисуем стрелку на конце линии
-                    const arrowLength = 12; // Длина стрелки
+                    const arrowLength = 14; // Длина стрелки
                     const arrowWidth = 2; // Ширина стрелки
           
                     // Вычисляем угол наклона линии
@@ -90,7 +91,7 @@ export default function MindMap() {
 
                      // Текст связи
                     const label = link.name || `${link.source} -> ${link.target}`;
-                    const fontSize = 14 / globalScale;
+                    const fontSize = 2 ;
                     ctx.font = `${fontSize}px Arial`;
                     ctx.fillStyle = "#3a4247"; // Цвет текста связи
 
