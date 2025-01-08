@@ -5,7 +5,7 @@ FROM node:18.17.0
 WORKDIR /app
 
 # Копируем package.json и устанавливаем зависимости
-COPY ./frontend/package.json ./frontend/package-lock.json ./
+COPY ./backend/package.json ./backend/package-lock.json ./
 RUN npm install
 
 # Копируем остальные файлы

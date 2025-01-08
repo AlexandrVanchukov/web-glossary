@@ -11,16 +11,11 @@ RUN npm install
 # Копируем остальные файлы
 COPY ./frontend .
 
+# Билдим Next.js проект
+RUN npm run build
 
-COPY ./frontend/docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
-ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
-
-# # Билдим Next.js проект
-# RUN npm run build
-
-# # Запускаем Next.js
-# CMD ["npm", "start"]
+# Запускаем Next.js
+CMD ["npm", "start"]
 
 # Открываем порт
 EXPOSE 3000

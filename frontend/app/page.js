@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import styles from "./page.module.css";
-
+import { server } from '@/env/env';
 export default function Home() {
   const [glossary, setGlossary] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/glossary')
+        fetch(server + '/api/glossary')
             .then(res => res.json())
             .then(data => setGlossary(data));
     }, []);

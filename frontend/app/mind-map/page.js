@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { server } from '@/env/env';
 
 const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false });
 
@@ -8,7 +9,7 @@ export default function MindMap() {
     const [mindMap, setMindMap] = useState({ nodes: [], links: [] });
     useEffect(() => {
       async function fetchData() {
-        const response = await fetch('http://localhost:5000/api/mind-map')
+        const response = await fetch(server + '/api/mind-map')
         const data = await response.json();
         setMindMap(data);
       }
